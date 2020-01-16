@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello shiro</title>
+</head>
+<body>
+
+用户名： <input name="userName" value=""> <br/>
+密 码：<input name="password" type="password" value=""> <br/>
+<input name="rememberMe" type="checkbox"> 记住我 <br/>
+<button id="loginBtn">登录</button>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function(){
+        console.log(123);
+        $("#loginBtn").click(function(){
+
+            var data = {};
+
+            data.userName = $("input[name='userName']").val();
+            data.password = $("input[name='password']").val();
+            data.rememberMe = $("input[name='rememberMe']").is(":checked");
+
+            console.log(data);
+
+            $.post(
+                '/user/login',
+                data,
+                function(){
+                    console.log("OK");
+                },"text"
+            );
+
+        })
+    })
+</script>
+</body>
+</html>
